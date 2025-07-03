@@ -10,7 +10,7 @@ class TablaSímbolos:
         
     def insert(self, nombre, atributos):
         if nombre in self.table:
-            print(f"Error: el símbolo {nombre} ya está registrado en la tabla.")
+            print(f"Error 1: El símbolo {nombre} ya está registrado en la tabla (se agregó el primero en aparecer).")
         else:
             self.table[nombre] = atributos
     
@@ -22,13 +22,13 @@ class TablaSímbolos:
             del self.table[nombre]
             return True
         else:
-            print("El símbolo", {nombre}, "no está registrado en esta tabla.")
+            print("Error 2: El símbolo", {nombre}, "no está registrado en esta tabla.")
             return False
     
     def display(self):
-        print("TABLA DE SÍMBOLOS:")
+        print("\nTABLA DE SÍMBOLOS:")
         if not self.table:
-            print("La tabla se encuentra vacía aún.")
+            print("Error 3: La tabla se encuentra vacía aún.")
             return
         else:
             for nombre, atributos in self.table.items():
@@ -37,7 +37,6 @@ class TablaSímbolos:
         
 tabla = TablaSímbolos()
 
-# función para crear atributos y guardarlos después en la tabla
 def atributos(tipo, valor, alcance):
     atribs = {
         "tipo": tipo,
@@ -51,6 +50,7 @@ def leerInput(nombreArchivo):
     
     with open(nombreArchivo, 'r') as file:
         for line in file:
+            line = line.strip()
             tokensSeparados = line.split(" ")
             
             if tokensSeparados[-1].find("\n") != -1:
@@ -71,8 +71,7 @@ def clasificarTokens(lineas):
             print(f"Error: el símbolo {linea[0]} no fue encontrado en el léxico del lenguaje.")
 
 tokensSeparados = leerInput("input_code.txt")
-print(tokensSeparados)
-
+print("TOKENS SEPARADOS:\n", tokensSeparados, "\n")
 clasificarTokens(tokensSeparados)
- 
+
 tabla.display()
