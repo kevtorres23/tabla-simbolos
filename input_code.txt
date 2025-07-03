@@ -1,0 +1,9 @@
+speed = 0
+tire_pressure = 34.0
+is_nitro_ready = green
+
+// Al finalizar la carrera
+check (speed >= 300):
+shout("¡Victoria total!")
+drift:
+shout("¡Gran carrera, pero aún puedes mejorar!")
