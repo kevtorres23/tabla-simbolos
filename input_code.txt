@@ -1,8 +1,48 @@
+// Inicia la carrera
 load speed = 0
-    load tire_pressure = 34.0
-load is_nitro_ready = green
-// Al finalizar la carrera
-check (speed >= 300):
-shout ("¡Victoria total!")
+load max_speed = 350
+turbo boost = 100
+
+// Empieza la primera vuelta
+lap (i = 0; i < 5; i = i + 1):
+    check (speed < max_speed):
+        speed = speed + 50
+        shout("Acelerando: " + str(speed))
+
+// Usa el turbo para un boost de velocidad
+move activateNitro():
+    shout("¡Turbo activado!")
+    speed = speed + boost
+    pitstop speed
+
+// Finaliza la carrera
+check (speed == max_speed):
+    shout("¡Carrera terminada! Velocidad máxima alcanzada")
 drift:
-shout ("¡Gran carrera, pero aún puedes mejorar!")
+    shout("¡Acelera más, que la carrera no ha terminado!")
+[8:12 p.m., 29/6/2025] Iván Corral: // Inicia la carrera
+load speed = 0;
+load max_speed = 300;
+turbo boost = 100;
+
+// Comienza la primera vuelta
+lap (i = 0; i < 5; i = i + 1) {
+  check (speed < max_speed) {
+    speed = speed + 50;
+    shout("Acelerando: " + speed + " km/h");
+  }
+}
+
+// Usar nitro al máximo
+move activateNitro() {
+  shout("Nitro activado!");
+  speed = speed + boost;
+  return speed;
+}
+
+// Completada la carrera
+check (speed == max_speed) {
+  shout("¡Carrera terminada! Velocidad máxima alcanzada");
+} otherwise {
+  shout("Acelera más, ¡que la carrera no ha terminado!");
+}

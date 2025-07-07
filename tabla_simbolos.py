@@ -1,4 +1,3 @@
-tokensPorLinea = []
 declaradores = ["load", "turbo"]
 funciones = ["move", "shout", "check", "drift:", "change", "lap", "green", "red", "race", "listen", "id"]
 parentesis = ['(', ')' , '{', '}' , '[', ']']
